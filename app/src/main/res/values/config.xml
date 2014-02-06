@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Vibrator -->
+    <bool name="has_vibrator_tuning">false</bool>
+    <string name="vibrator_sysfs_file">"/sys/class/timed_output/vibrator/level"</string>
+    <string name="intensity_max_value">100</string>
+    <string name="intensity_warning_threshold">80</string>
+    <string name="intensity_default_value">50</string>
+    <string name="intensity_min_value">0</string>
+</resources>
