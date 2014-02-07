@@ -58,13 +58,7 @@ public class DeviceSettings extends PreferenceActivity {
 
         Boolean hasVibratorTuning = getResources().getBoolean(R.bool.has_vibrator_tuning);
 
-        addPreferencesFromResource(R.xml.pref_blank);
-
-
-        // Add 'notifications' preferences, and a corresponding header.
-        PreferenceCategory fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.title_haptic);
-        getPreferenceScreen().addPreference(fakeHeader);
+        //Add Haptic preferences
         addPreferencesFromResource(R.xml.pref_haptic);
 
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
