@@ -3,7 +3,7 @@
     <PreferenceCategory
         android:title="@string/title_haptic"
         android:dependency="vibrator_tuning">
-        <com.cyanogenmod.settings.device.VibratorTuningPreference
+        <com.cyanogenmod.settings.device.prefs.VibratorTuningPreference
             android:key="vibrator_tuning"
             android:title="@string/vibrator_tuning_title"
             android:dialogTitle="@string/vibrator_tuning_title" />

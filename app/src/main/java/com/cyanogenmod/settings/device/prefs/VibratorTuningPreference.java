@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package com.cyanogenmod.settings.device.prefs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -35,6 +35,9 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Button;
+
+import com.cyanogenmod.settings.device.R;
+import com.cyanogenmod.settings.device.Utils;
 
 import java.lang.Math;
 import java.text.DecimalFormat;
