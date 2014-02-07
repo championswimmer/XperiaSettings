@@ -56,6 +56,8 @@ public class DeviceSettings extends PreferenceActivity {
         // In the simplified UI, fragments are not used at all and we instead
         // use the older PreferenceActivity APIs.
 
+        Boolean hasVibratorTuning = getResources().getBoolean(R.bool.has_vibrator_tuning);
+
         addPreferencesFromResource(R.xml.pref_blank);
 
 
@@ -69,6 +71,10 @@ public class DeviceSettings extends PreferenceActivity {
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
         bindPreferenceSummaryToValue(findPreference("vibrator_tuning"));
+
+        ((VibratorTuningPreference) findPreference("vibrator_tuning")).setEnabled(hasVibratorTuning);
+
+
     }
 
     /**
