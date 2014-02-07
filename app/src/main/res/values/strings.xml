@@ -9,6 +9,7 @@
     <string name="vibrator_title">Vibrator</string>
     <string name="vibrator_tuning_title">Vibration strength</string>
     <string name="vibrator_tuning_summary_head">Adjust the strength of the vibration feedback</string>
+    <string name="vibrator_tuning_summary_unsupported">Not supported</string>
     <string name="vibrator_warning">Values higher than %1$d are not recommended</string>
 
 

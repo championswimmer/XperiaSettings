@@ -55,9 +55,10 @@ public class DeviceSettings extends PreferenceActivity {
         // to reflect the new value, per the Android Design guidelines.
         bindPreferenceSummaryToValue(findPreference("vibrator_tuning"));
 
+        //Disable unsupported prefs here
         if (!hasVibratorTuning) {
             ((VibratorTuningPreference) findPreference("vibrator_tuning")).setEnabled(false);
-            ((VibratorTuningPreference) findPreference("vibrator_tuning")).setSummary("Not supported");
+            ((VibratorTuningPreference) findPreference("vibrator_tuning")).setSummary(getString(R.string.vibrator_tuning_summary_unsupported));
         }
 
 
