@@ -6,9 +6,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 
 import com.cyanogenmod.settings.device.R;
 import com.cyanogenmod.settings.device.Utils;
@@ -21,8 +19,8 @@ public class PenModePreference extends CheckBoxPreference implements CheckBoxPre
     public static String TAG = "PenModePreference";
 
     public static String SYSFS_PATH = null;
-    public static  String ENABLED_VALUE;
-    public static  String DISABLED_VALUE;
+    public static String ENABLED_VALUE;
+    public static String DISABLED_VALUE;
     public static Boolean SUPPORTED;
 
     private Context CONTEXT;
@@ -35,8 +33,9 @@ public class PenModePreference extends CheckBoxPreference implements CheckBoxPre
         DISABLED_VALUE = context.getString(R.string.penmode_enabled_value);
         SUPPORTED = context.getResources().getBoolean(R.bool.has_penmode);
     }
+
     @Override
-    protected void onBindView (final View v) {
+    protected void onBindView(final View v) {
         super.onBindView(v);
     }
 
@@ -49,14 +48,14 @@ public class PenModePreference extends CheckBoxPreference implements CheckBoxPre
 
     }
 
-    public static void restore (Context context) {
+    public static void restore(Context context) {
         SYSFS_PATH = context.getString(R.string.penmode_sysfs_file);
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String value = settings.getString("penmode", DISABLED_VALUE);
         Utils.writeValue(SYSFS_PATH, value);
     }
 
-    public String getValueFromState (Boolean state) {
+    public String getValueFromState(Boolean state) {
         if (state) {
             return ENABLED_VALUE;
         } else {
@@ -64,7 +63,7 @@ public class PenModePreference extends CheckBoxPreference implements CheckBoxPre
         }
     }
 
-    public Boolean checkSupport () {
+    public Boolean checkSupport() {
         Boolean fileExists = Utils.fileExists(SYSFS_PATH);
         //Log.d(TAG, "File exists : " + fileExists);
         //Log.d(TAG, "Enabled via config : " + isEnabledInConfig);

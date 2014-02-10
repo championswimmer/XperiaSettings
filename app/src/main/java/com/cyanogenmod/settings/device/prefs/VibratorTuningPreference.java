@@ -20,7 +20,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
@@ -32,15 +31,12 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Button;
 
 import com.cyanogenmod.settings.device.R;
 import com.cyanogenmod.settings.device.Utils;
-
-import java.lang.Math;
-import java.text.DecimalFormat;
 
 /**
  * Special preference type that allows configuration of vibrator intensity settings on Sony
@@ -153,7 +149,7 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
         setSummary(getValue());
     }
 
-    public String getValue () {
+    public String getValue() {
         try {
             SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
             int strength = settings.getInt("percent", strengthToPercent(DEFAULT_VALUE));
@@ -210,8 +206,8 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
     }
 
     /**
-    * Convert vibrator strength to percent
-    */
+     * Convert vibrator strength to percent
+     */
     public static int strengthToPercent(int strength) {
         double maxValue = MAX_VALUE;
         double minValue = MIN_VALUE;
@@ -227,8 +223,8 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
     }
 
     /**
-    * Convert percent to vibrator strength
-    */
+     * Convert percent to vibrator strength
+     */
     public static int percentToStrength(int percent) {
         int strength = Math.round((((MAX_VALUE - MIN_VALUE) * percent) / 100) + MIN_VALUE);
 
@@ -240,7 +236,7 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
         return strength;
     }
 
-    public Boolean checkSupport () {
+    public Boolean checkSupport() {
         Boolean fileExists = Utils.fileExists(FILE_PATH);
         //Log.d(TAG, "File exists : " + fileExists);
         //Log.d(TAG, "Enabled via config : " + isEnabledInConfig);

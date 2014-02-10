@@ -14,7 +14,7 @@ import com.cyanogenmod.settings.device.prefs.VibratorTuningPreference;
  * handset devices, settings are presented as a single list. On tablets,
  * settings are split by category, with category headers shown to the left of
  * the list of settings.
- * <p>
+ * <p/>
  * See <a href="http://developer.android.com/design/patterns/settings.html">
  * Android Design: Settings</a> for design guidelines and the <a
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
@@ -46,7 +46,7 @@ public class DeviceSettings extends PreferenceActivity {
         // In the simplified UI, fragments are not used at all and we instead
         // use the older PreferenceActivity APIs.
 
-                //Add Haptic preferences
+        //Add Haptic preferences
         addPreferencesFromResource(R.xml.pref_device);
 
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
