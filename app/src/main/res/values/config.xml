@@ -32,4 +32,10 @@
     <string name="penmode_enabled_value">1</string>
     <string name="penmode_disabled_value">0</string>
 
+    <!-- Pen Mode -->
+    <bool name="has_knock_on">false</bool>
+    <string name="knock_on_sysfs_file">"/sys/devices/virtual/clearpad/wakeup_gesture"</string>
+    <string name="knock_on_enabled_value">1</string>
+    <string name="knock_on_disabled_value">0</string>
+
 </resources>
