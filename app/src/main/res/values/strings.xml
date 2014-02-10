@@ -2,18 +2,26 @@
     <string name="app_name">XperiaSettings</string>
     <string name="title_activity_xperia_settings">Xperia Settings</string>
 
+
+    <string name="defaults_button">Reset to default</string>
+    <string name="summary_unsupported">Not supported</string>
+
+
+
     <!-- Strings related to Haptic -->
     <string name="title_haptic">Haptic</string>
-
     <!-- VibratorTuning -->
     <string name="vibrator_title">Vibrator</string>
     <string name="vibrator_tuning_title">Vibration strength</string>
     <string name="vibrator_tuning_summary_head">Adjust the strength of the vibration feedback</string>
-    <string name="vibrator_tuning_summary_unsupported">Not supported</string>
     <string name="vibrator_warning">Values higher than %1$d are not recommended</string>
 
 
-    <string name="defaults_button">Reset to default</string>
+    <!-- Touchscreen -->
+    <string name="title_touchscreen">Touchscreen</string>
+    <!-- Pen Mode -->
+    <string name="penmode_title">Pen Mode</string>
+    <string name="penmode_summary">"Enable using any ordinary pen or pencil as stylus"</string>
 
 
 </resources>

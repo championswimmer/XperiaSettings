@@ -8,4 +8,12 @@
     <string name="intensity_warning_threshold">80</string>
     <string name="intensity_default_value">50</string>
     <string name="intensity_min_value">0</string>
+
+
+    <!-- Pen Mode -->
+    <bool name="has_penmode">false</bool>
+    <string name="penmode_sysfs_file">"/sys/devices/virtual/clearpad/pen"</string>
+    <string name="penmode_enabled_value">1</string>
+    <string name="penmode_disabled_value">0</string>
+
 </resources>
