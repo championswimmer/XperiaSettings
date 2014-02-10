@@ -23,6 +23,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.View;
+import android.util.Log;
 
 import com.cyanogenmod.settings.device.R;
 import com.cyanogenmod.settings.device.Utils;
@@ -32,7 +33,7 @@ import com.cyanogenmod.settings.device.Utils;
  */
 public class KnockOnPreference extends CheckBoxPreference implements CheckBoxPreference.OnPreferenceChangeListener {
 
-    public static String TAG = "PenModePreference";
+    public static String TAG = "KnockOnPreference";
 
     public static String SYSFS_PATH = null;
     public static String ENABLED_VALUE;
@@ -66,6 +67,10 @@ public class KnockOnPreference extends CheckBoxPreference implements CheckBoxPre
 
     public static void restore(Context context) {
         SYSFS_PATH = context.getString(R.string.knock_on_sysfs_file);
+        DISABLED_VALUE = context.getString(R.string.knock_on_enabled_value);
+        if (!Utils.fileExists(SYSFS_PATH)) {
+            return;
+        }
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String value = settings.getString("knock_on", DISABLED_VALUE);
         Utils.writeValue(SYSFS_PATH, value);
@@ -80,12 +85,13 @@ public class KnockOnPreference extends CheckBoxPreference implements CheckBoxPre
     }
 
     public Boolean checkSupport() {
+        SYSFS_PATH = getContext().getString(R.string.knock_on_sysfs_file);
         Boolean fileExists = Utils.fileExists(SYSFS_PATH);
-        //Log.d(TAG, "File exists : " + fileExists);
-        //Log.d(TAG, "Enabled via config : " + isEnabledInConfig);
         if ((SUPPORTED && fileExists)) {
             return true;
         } else {
+            Log.w(TAG, "File exists : " + SYSFS_PATH + " : " + fileExists);
+            Log.w(TAG, "Enabled via config : " + SUPPORTED);
             setSummary(R.string.summary_unsupported);
             setEnabled(false);
             return false;
