@@ -30,6 +30,10 @@
             android:key="penmode"
             android:summary="@string/penmode_summary"
             android:title="@string/penmode_title" />
+        <com.cyanogenmod.settings.device.prefs.KnockOnPreference
+            android:key="knock_on"
+            android:title="@string/knock_on_title"
+            android:summary="@string/knock_on_summary"/>
     </PreferenceCategory>
 
 

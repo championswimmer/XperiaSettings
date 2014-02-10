@@ -22,6 +22,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
+import com.cyanogenmod.settings.device.prefs.KnockOnPreference;
 import com.cyanogenmod.settings.device.prefs.PenModePreference;
 import com.cyanogenmod.settings.device.prefs.VibratorTuningPreference;
 
@@ -62,7 +63,7 @@ public class DeviceSettings extends PreferenceActivity {
         // In the simplified UI, fragments are not used at all and we instead
         // use the older PreferenceActivity APIs.
 
-        //Add Haptic preferences
+        //Add preferences
         addPreferencesFromResource(R.xml.pref_device);
 
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
@@ -73,6 +74,7 @@ public class DeviceSettings extends PreferenceActivity {
         //Disable unsupported prefs here
         ((VibratorTuningPreference) findPreference("vibrator_tuning")).checkSupport();
         ((PenModePreference) findPreference("penmode")).checkSupport();
+        ((KnockOnPreference) findPreference("knock_on")).checkSupport();
 
 
     }
