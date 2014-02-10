@@ -54,6 +54,7 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
     private static int WARNING_THRESHOLD;
     private static int DEFAULT_VALUE;
     private static int MIN_VALUE;
+    private static Boolean SUPPORTED;
 
     private Context mContext;
     private SeekBar mSeekBar;
@@ -73,6 +74,7 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
         WARNING_THRESHOLD = Integer.valueOf(context.getResources().getString(R.string.intensity_warning_threshold));
         DEFAULT_VALUE = Integer.valueOf(context.getResources().getString(R.string.intensity_default_value));
         MIN_VALUE = Integer.valueOf(context.getResources().getString(R.string.intensity_min_value));
+        SUPPORTED = context.getResources().getBoolean(R.bool.has_vibrator_tuning);
 
         setDialogLayoutResource(R.layout.preference_dialog_vibrator_tuning);
     }
@@ -236,5 +238,18 @@ public class VibratorTuningPreference extends DialogPreference implements SeekBa
             strength = MIN_VALUE;
 
         return strength;
+    }
+
+    public Boolean checkSupport () {
+        Boolean fileExists = Utils.fileExists(FILE_PATH);
+        //Log.d(TAG, "File exists : " + fileExists);
+        //Log.d(TAG, "Enabled via config : " + isEnabledInConfig);
+        if ((SUPPORTED && fileExists)) {
+            return true;
+        } else {
+            setSummary(R.string.summary_unsupported);
+            setEnabled(false);
+            return false;
+        }
     }
 }

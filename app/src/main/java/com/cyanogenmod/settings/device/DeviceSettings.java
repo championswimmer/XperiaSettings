@@ -6,6 +6,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
+import com.cyanogenmod.settings.device.prefs.PenModePreference;
 import com.cyanogenmod.settings.device.prefs.VibratorTuningPreference;
 
 /**
@@ -45,10 +46,8 @@ public class DeviceSettings extends PreferenceActivity {
         // In the simplified UI, fragments are not used at all and we instead
         // use the older PreferenceActivity APIs.
 
-        Boolean hasVibratorTuning = getResources().getBoolean(R.bool.has_vibrator_tuning);
-
-        //Add Haptic preferences
-        addPreferencesFromResource(R.xml.pref_haptic);
+                //Add Haptic preferences
+        addPreferencesFromResource(R.xml.pref_device);
 
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
@@ -56,10 +55,8 @@ public class DeviceSettings extends PreferenceActivity {
         bindPreferenceSummaryToValue(findPreference("vibrator_tuning"));
 
         //Disable unsupported prefs here
-        if (!hasVibratorTuning) {
-            ((VibratorTuningPreference) findPreference("vibrator_tuning")).setEnabled(false);
-            ((VibratorTuningPreference) findPreference("vibrator_tuning")).setSummary(getString(R.string.vibrator_tuning_summary_unsupported));
-        }
+        ((VibratorTuningPreference) findPreference("vibrator_tuning")).checkSupport();
+        ((PenModePreference) findPreference("penmode")).checkSupport();
 
 
     }

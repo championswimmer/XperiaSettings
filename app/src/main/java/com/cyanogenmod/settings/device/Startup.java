@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.cyanogenmod.settings.device.prefs.PenModePreference;
 import com.cyanogenmod.settings.device.prefs.VibratorTuningPreference;
 
 public class Startup extends BroadcastReceiver {
@@ -27,5 +28,6 @@ public class Startup extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         VibratorTuningPreference.restore(context);
+        PenModePreference.restore(context);
     }
 }

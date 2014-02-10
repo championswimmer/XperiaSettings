@@ -9,6 +9,15 @@
             android:dialogTitle="@string/vibrator_tuning_title" />
         </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/title_touchscreen">
+        <com.cyanogenmod.settings.device.prefs.PenModePreference
+            android:key="penmode"
+            android:summary="@string/penmode_summary"
+            android:title="@string/penmode_title"/>
+    </PreferenceCategory>
+
+
 
 
 </PreferenceScreen>
