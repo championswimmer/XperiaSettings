@@ -31,7 +31,7 @@ import com.cyanogenmod.settings.device.Utils;
 /**
  * Created by championswimmer on 10/2/14.
  */
-public class KnockOnPreference extends CheckBoxPreference implements CheckBoxPreference.OnPreferenceChangeListener {
+public class KnockOnPreference extends CheckBoxPreference {
 
     public static String TAG = "KnockOnPreference";
 
@@ -47,7 +47,7 @@ public class KnockOnPreference extends CheckBoxPreference implements CheckBoxPre
         CONTEXT = context;
         SYSFS_PATH = context.getString(R.string.knock_on_sysfs_file);
         ENABLED_VALUE = context.getString(R.string.knock_on_enabled_value);
-        DISABLED_VALUE = context.getString(R.string.knock_on_enabled_value);
+        DISABLED_VALUE = context.getString(R.string.knock_on_disabled_value);
         SUPPORTED = context.getResources().getBoolean(R.bool.has_knock_on);
     }
 
@@ -57,17 +57,16 @@ public class KnockOnPreference extends CheckBoxPreference implements CheckBoxPre
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object o) {
-        Boolean state = o.toString().equalsIgnoreCase("true");
-        String val = getValueFromState(state);
+    protected void onClick() {
+        String val = getValueFromState(!isChecked());
+        setChecked(!isChecked());
+        //Log.d(TAG, SYSFS_PATH + val);
         Utils.writeValue(SYSFS_PATH, val);
-        return true;
-
     }
 
     public static void restore(Context context) {
         SYSFS_PATH = context.getString(R.string.knock_on_sysfs_file);
-        DISABLED_VALUE = context.getString(R.string.knock_on_enabled_value);
+        DISABLED_VALUE = context.getString(R.string.knock_on_disabled_value);
         if (!Utils.fileExists(SYSFS_PATH)) {
             return;
         }
